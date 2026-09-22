@@ -1,17 +1,44 @@
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
+const PORT = 3000;
 
-app.use(cors({origin: ['http://localhost:5500', 'http://127.0.0.1:5500']}));
-
+app.use(cors());
 app.use(express.json());
 
-app.post('/alunos', (req, res) => {
-    const { nome, url } = req.body;
+app.post('/api/login', (req, res) => {
 
-    res.json({nome: nome, url: url});
+    const { nomeTutor, nomePet, raca, genero, peso, idade } = req.body;
+
+    if (!nomeTutor || !nomePet || !raca || !genero || peso === undefined || idade === undefined) {
+        return res.status(400).json({ 
+            message: 'Todos os campos são obrigatórios.' 
+        });
+    }
+
+    console.log('Novo pet cadastrado recebido:', {
+        nomeTutor,
+        nomePet,
+        raca,
+        genero,
+        peso,
+        idade
+    });
+
+    return res.status(201).json({
+        message: 'Cadastro do pet realizado com sucesso!',
+        usuario: {
+            nomeTutor,
+            nomePet,
+            raca,
+            genero,
+            peso,
+            idade
+        }
+    });
 });
 
-app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT} (http://localhost:${PORT})`);
 });

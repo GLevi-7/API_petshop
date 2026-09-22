@@ -12,7 +12,15 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cors" : "^2.8.6",
+    "cors": "^2.8.6",
     "express": "^5.2.1"
-  } 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GLevi-7/API_petshop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GLevi-7/API_petshop/issues"
+  },
+  "homepage": "https://github.com/GLevi-7/API_petshop#readme"
 }
